@@ -1,0 +1,14 @@
+<#include "/common/layout.html"> 
+<@layout title="后台管理">
+</head>
+<body class="easyui-layout" id="indexLayout" style="overflow-y: hidden"  scroll="no">
+	<div data-options="region:'north'" style="height: 50px" href="${root!}/north"></div>
+	<div data-options="region:'center',title:'',iconCls:'icon-ok'"
+		href="${root!}/common/center.html" style="background: #eee; overflow-y:hidden"></div>
+	<div data-options="region:'south'"  style="height:30px; background: #D2E0F2; ">
+        <div class="footer">By dzd www.dzd.com</div>
+    </div>
+	<div data-options="region:'west'" title="菜单"
+		style="width: 180px;" href="${root!}/west" id="west"></div>
+</body>
+</@layout>

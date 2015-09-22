@@ -1,0 +1,51 @@
+<script>
+var menu_tree;
+	$(function(){
+		menu_tree=$('#role_menu').tree({    
+		    url:'/menu/combotree/?ids=${(po.menuIds)!}',
+		    checkbox:true,
+		    onCheck:function(node, checked){
+		    	var ids="";
+		    	var nodes = $('#role_menu').tree('getChecked');
+		    	//var nodes_i = $('#role_menu').tree('getChecked', 'indeterminate');
+		    	
+		    	for(var n in nodes){
+		    		if(nodes[n].id!=0)
+		    			ids+=nodes[n].id+",";
+		    	}
+		    	if(ids.length>0)
+		    		ids=ids.substr(0,ids.length-1);
+		    		
+		    	$("#menuIds").val(ids);
+		    	
+		    }
+		}); 
+		
+	})
+</script>
+<form method="post" id="editForm" name="editForm">
+	<input type="hidden" name="role.id" value="${(po.id)!}" id="poid">
+	<input type="hidden" name="role.menuIds" id="menuIds" value="${(po.menuIds)!}"/>
+	<div id="tt" class="easyui-tabs" style="width: 786px; height: 450px;">
+		<div title="角色" style="padding: 5px;">
+			<table class="tableForm tableCss">
+				<tr>
+					<th><font color=red>*</font>名称</th>
+					<td><input type="text" name="role.name" class="easyui-validatebox" 
+					value="${(po.name)!}" data-options="required:true"></td>
+					<th>排序</th>
+					<td><input type="text" name="role.seq" class="easyui-validatebox" 
+					value="${(po.seq)!}"></td>
+				</tr>
+				<tr>
+					<th>备注</th>
+					<td colspan="3">
+					<textarea  name="role.remark" rows="4" cols="40">${(po.remark)!}</textarea>
+				</tr>
+			</table>
+		</div>
+		<div title="授权" style="padding: 5px;">
+			<ul id="role_menu"></ul>  
+		</div>
+	</div>
+</form>

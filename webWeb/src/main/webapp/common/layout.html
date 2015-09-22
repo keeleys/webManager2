@@ -1,0 +1,32 @@
+<#macro layout title="" body=true>
+<!DOCTYPE html>
+<html>
+<head>
+<title>${title!}-后台管理系统</title>
+<noscript><iframe src="*.htm"></iframe></noscript><#--禁止保存-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<link rel="stylesheet" type="text/css" href="${root!}/css/default.css">
+<link rel="stylesheet" type="text/css"href="${root!}/css/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="${root!}/css/easyui/themes/icon.css">
+<link rel="stylesheet" href="${root!}/css/syCss.css?v=20120804" type="text/css"></link>
+
+<script type="text/javascript" src="${root!}/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="${root!}/js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${root!}/js/easyui/easyui-lang-zh_CN.js"></script>
+
+<link rel="stylesheet" href="${root!}/js/jquery-easyui-portal/portal.css" type="text/css"></link>
+<script type="text/javascript" src="${root!}/js/jquery-easyui-portal/jquery.portal.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="${root!}/js/easyui/syUtil.js" charset="utf-8"></script>
+<script type="text/javascript" src="${root!}/js/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="${root!}/js/common.js?v=20120804" charset="utf-8"></script>
+<!--<link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
+<script type="text/javascript" src="/js/uploadify/jquery.uploadify.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="${root!}/js/swfupload/swfupload.js" charset="utf-8"></script>
+<script type="text/javascript" src="${root!}/js/swfupload/handlers.js" charset="utf-8"></script>
+<#nested>
+
+</html>
+</#macro>

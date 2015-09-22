@@ -1,0 +1,92 @@
+<#include "/common/layout.html"> 
+<@layout title="123">
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid.js"></script>
+<script type="text/javascript" charset="utf-8">
+var model_name = "{root!}/filebox";
+var model_title="用户";
+	var editRow = undefined;
+	var datagrid;
+	var filetype=new Array();
+	filetype['img']='图片';
+	filetype['file']='文件';
+	filetype['media']='媒体';
+	filetype['zip']='压缩包';
+	$(function() {
+		datagrid = $('#form_datagrid').datagrid({
+			url:model_name+'/grid',
+			queryParams: {
+				orderBy: 'order by id desc'
+			},
+			frozenColumns : [ [ {
+				field:'ids',
+				checkbox:true,
+				formatter:function(value) {
+					return row.id;
+				}
+			},{
+				title : '编号',
+				field : 'id',
+				width : 150,
+				hidden:true
+			} ,{
+				title : '文件名',
+				field : 'filepath',
+				width : 150,
+				formatter:function(val,r){
+					var v=r.filepath;
+					if(r.ftype=='img')
+						return "<span url='/upload/"+v+"' style='cursor:pointer;color:blue;'  onmouseover='hoverShow(this);'onmouseout='$(\"#imgShow\").hide();'>"+val+"</span>";
+					else
+						return "<span style='cursor:pointer;color:blue;'>"+v+"</span>";
+				}
+			},{
+				title : '原文件名',
+				field : 'filename',
+				width : 250
+			},{
+				title : '大小（MB）',
+				field : 'size',
+				width : 150
+			} ,{
+				title : '文件类型',
+				field : 'ftype',sortable : true,
+				width : 150,formatter:function(v){return filetype[v];}
+			} ,{
+				title : '上传时间',
+				field : 'create_time',
+				width : 150,
+				sortable : true
+				} 
+			] ],
+			toolbar : [ {
+					text : '删除',
+					iconCls : 'icon-remove',
+					handler : function() {
+						del();
+					}
+				}, '-', {
+					text : '取消选中',
+					iconCls : 'icon-undo',
+					handler : function() {
+					datagrid.datagrid('unselectAll');
+				}
+			}, '-' ],
+			onDblClickRow:null
+		});
+	});
+	function view_fuc(){
+		alert("test");
+	}
+</script>
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_common.js"></script>
+</head>
+	
+<#include "/common/seach.html" />
+<@seach>
+<td>开始时间</td>
+<td>
+<input name="seachGt_create_time"class="easyui-datebox" >-<input name="seachLt_create_time"class="easyui-datebox" > 
+</td>
+</@seach>
+
+</@layout>

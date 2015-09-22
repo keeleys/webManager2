@@ -1,0 +1,30 @@
+<script>
+	$(function(){
+		$('.easyui-accordion li a').click(function(){
+			var tabTitle = $(this).text();
+			var url = $(this).attr("href");
+			addTab(tabTitle,url);
+			$('.easyui-accordion li div').removeClass("selected");
+			$(this).parent().addClass("selected");
+			return false;
+		}).hover(function(){
+			$(this).parent().addClass("hover");
+		},function(){
+			$(this).parent().removeClass("hover");
+		});
+	})
+</script>
+<div class="easyui-accordion"  >
+<#list menuList as pmenu>
+	<div title="${pmenu.name!}" data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<#list pmenu.slist as smenu>
+			<li><div>
+			<a target="mainFrame" href="${root!}${smenu.url!}" >
+				<span class="icon icon-set" ></span>${smenu.name!} </a>
+			</div></li>
+			</#list>
+		</ul>
+	</div>
+</#list>
+</div>

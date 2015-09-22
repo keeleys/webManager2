@@ -1,0 +1,26 @@
+<script type="text/javascript" charset="utf-8">
+	function logout(b) {
+		$.post('${root!}/logout', function() {
+			if (b) {
+				if (sy.isLessThanIe8()) {
+					window.location.href="${root!}/";
+				} else {
+					location.replace(sy.bp());
+				}
+			} else {
+				window.location.href="${root!}/";
+			}
+		});
+	}
+</script>
+
+<div style="position: absolute; right: 0px; bottom: 0px; ">
+	欢迎您 ${(session.current_user.name)!}
+	<a href="javascript:void(0);" class="easyui-menubutton" menu="#layout_north_zxMenu" iconCls="icon-back">退出</a>
+</div>
+<div id="layout_north_zxMenu" style="width: 100px; display: none;">
+<#-- 	<div onclick="logout(true);">锁定窗口</div> -->
+<#-- 	<div class="menu-sep"></div> -->
+<#-- 	<div onclick="logout();">切换用户</div> -->
+	<div onclick="if(confirm('确定要退出系统？'))logout();">退出系统</div>
+</div>

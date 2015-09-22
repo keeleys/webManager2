@@ -1,0 +1,63 @@
+<#include "/common/layout.html"> 
+<@layout title="123">
+<script type="text/javascript">
+var model_name = "${root!}/menu";
+var model_title="菜单管理";
+var datagrid;
+	$(function() {
+		datagrid=$('#form_datagrid').treegrid({
+		 	url:model_name+'/treeDataGrid',
+		 	rownumbers:true,
+			fit:true,
+			fitColumns:false,
+			nowrap:false,
+			animate:false,
+			border:false,
+			idField:'id',
+			treeField:'name',
+			toolbar:'#tree_tb',
+			frozenColumns:[ [ {
+				title:'id',
+				field:'id',
+				hidden:true
+			},{
+				field:'name',
+				title:'名称',
+				width:180
+			} ] ],
+		 	columns:[[    
+	 		{field:'pid',title:'上级分类',
+				formatter : function(value, rowData, rowIndex) {
+					return rowData.pname;
+				}
+			},
+	        {field:'id',title:'编号',hidden:true},
+	        {field:'url',title:'链接'},
+	        {field:'seq',title:'排序'},
+	        {field:'type',title:'类型',
+				formatter : function(value, rowData, rowIndex) {
+					return value==1?"功能":"菜单";
+				}},
+	        {field:'create_time',title:'创建时间'},
+	        {field:'update_time',title:'修改时间'}
+		    ]]
+		})
+	})
+</script>
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_tree.js"></script>
+</head>
+<div id="tree_tb">
+<a href="javascript:void(0)" onclick="expandAll();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">展开</a>
+<a href="javascript:void(0)" onclick="collapseAll();" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">折叠</a>
+<a href="javascript:void(0)" onclick="reload();" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+<a href="javascript:void(0)" onclick="view();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">查看</a>
+<a href="javascript:void(0)" onclick="add();" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
+<a href="javascript:void(0)" onclick="del();"class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+<a href="javascript:void(0)" onclick="edit();" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+<a href="javascript:void(0)" onclick="datagrid.treegrid('unselectAll');" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">取消选中</a>
+</div>
+<#include "/common/seach.html" />
+<@seach hasSeach=false hasTool=false>
+
+</@seach>
+</@layout>

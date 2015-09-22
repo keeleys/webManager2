@@ -1,0 +1,50 @@
+<#include "/common/layout.html"> 
+<@layout title="123">
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid.js"></script>
+<script type="text/javascript">
+var model_name = "${root!}/loginLog";
+var model_title="登录日志";
+var datagrid;
+	$(function() {
+		datagrid=$('#product_type_table').datagrid({
+		 	url:model_name+'/grid',
+		 	rownumbers:true,
+		 	queryParams: {
+				orderBy: 'order by id desc '
+			},
+		 	columns:[[    
+		        {field:'id',title:'编号',width:100,checkbox:true},
+		        {field:'user_id',title:'用户id',width:80},
+		        {field:'user_name',title:'用户名',width:100},
+		        {field:'ip',title:'ip地址',width:200},
+		        {field:'login_time',title:'登录时间'},
+		        {field:'logout_time',title:'退出时间'},
+		    ]],
+		    toolbar : [ {
+					text : '删除',
+					iconCls : 'icon-remove',
+					handler : function() {
+						del();
+					}
+				}, '-', {
+					text : '取消选中',
+					iconCls : 'icon-undo',
+					handler : function() {
+					datagrid.datagrid('unselectAll');
+				}
+			}, '-' ],
+			onDblClickRow:null
+		})
+	})
+</script>
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_common.js"></script>
+</head>
+	<#include "/common/seach.html" />
+	<@seach tableid="product_type_table">
+	
+	<td>用户名</td>
+	<td>
+	<input type="text" name="seach_u.name"/>
+	</td>
+	</@seach>
+</@layout>

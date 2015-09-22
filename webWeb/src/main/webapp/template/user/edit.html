@@ -1,0 +1,53 @@
+<script>
+	$(function(){
+	
+			$("#role_id").combotree({
+			    url: '/role/combotree',    
+				multiple:true,
+		    	editable:false,
+			    width:400
+			});
+			var sids = "${(po.role_ids)!}";
+			if(sids) $('#role_id').combotree('setValues', sids.split(","));
+		
+	})
+</script>
+<form method="post" id="editForm" name="editForm">
+	<input type="hidden" name="user.id" value="${(po.id)!}" id="poid">
+	<div id="tt" class="easyui-tabs" style="width: 786px; height: 450px;">
+		<div title="用户信息" style="padding: 5px;">
+			<table class="tableForm tableCss">
+				<tr>
+					<th><font color=red>*</font>用户名称</th>
+					<td><input type="text" name="user.name" class="easyui-validatebox"
+						value="${(po.name)!}" data-options="required:true"></td>
+					<th>密码</th>
+					<td><input type="text" name="user.password"
+						class="easyui-validatebox" value="${(po.password)!}"
+						data-options=""></td>
+				</tr>
+				<tr>
+					<th><font color=red>*</font>手机号</th>
+					<td><input type="text" name="user.phone" class="easyui-validatebox"
+						value="${(po.phone)!}" data-options="required:true"></td>
+					<th>邮箱</th>
+					<td><input type="text" name="user.email"
+						class="easyui-validatebox" value="${(po.email)!}"
+						data-options="validType:'email'"></td>
+				</tr>
+				<tr>
+				<th>住址</th>
+				<td colspan="3">
+					<textarea name="user.address" rows="4" cols="40">${po.address!}</textarea>
+				</td>
+				</tr>
+				<tr>
+					<th>角色</th>
+					<td colspan="3">
+						<input id="role_id" name="sids"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>

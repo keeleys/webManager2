@@ -1,0 +1,47 @@
+<script>
+	$(function(){
+		var mtype =${(po.type)!0};
+		$("input[name='menu.type']").eq(mtype).attr("checked",'checked');
+		$('#pid').combotree({
+			url: '/menu/combotree/${(po.id)!}',
+			width:250
+		}); 
+	})
+</script>
+<form method="post" id="editForm" name="editForm">
+	<input type="hidden" name="menu.id" value="${(po.id)!}" id="poid">
+	<div id="tt" class="easyui-tabs" style="width: 786px; height: 450px;">
+		<div title="导航菜单" style="padding: 5px;">
+			<table class="tableForm tableCss">
+				<tr>
+					<th><font color=red>*</font>名称</th>
+					<td><input type="text" name="menu.name" class="easyui-validatebox" 
+					value="${(po.name)!}" data-options="required:true"></td>
+					<th>排序</th>
+					<td><input type="text" name="menu.seq" class="easyui-validatebox" 
+					value="${(po.seq)!}"></td>
+				</tr>
+				<tr>
+					<th>所属上级</th>
+					<td colspan="3">
+						<input id="pid" name="menu.pid" value="${(po.pid)!0}"/>
+					</td>
+				</tr>
+				<tr>
+					<th><font color=red>*</font>类别</th>
+					<td colspan="3">
+						菜单<input type="radio" name="menu.type" value="0" checked="checked">
+						功能<input type="radio" name="menu.type" value="1">
+					</td>
+				</tr>
+				<tr>
+					<th>url</th>
+					<td colspan="3"><input type="text" name="menu.url" class="easyui-validatebox"
+						value="${(po.url)!}"></td>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>

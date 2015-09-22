@@ -1,0 +1,176 @@
+<script>
+	$(function(){
+		$('.easyui-accordion li a').click(function(){
+			var tabTitle = $(this).text();
+			var url = $(this).attr("href");
+			addTab(tabTitle,url);
+			$('.easyui-accordion li div').removeClass("selected");
+			$(this).parent().addClass("selected");
+			return false;
+		}).hover(function(){
+			$(this).parent().addClass("hover");
+		},function(){
+			$(this).parent().removeClass("hover");
+		});
+	})
+</script>
+<#if session.current_user.id ==1 >
+<div class="easyui-accordion" fit="falase" border="true" selected="-1">
+	<div title="商品管理" data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/productType" >
+				<span class="icon icon-set" ></span>商品类别管理 </a>
+			</div></li>
+			<li><div>
+			<a target="mainFrame" href="/product" >
+				<span class="icon icon-set" ></span>商品管理 </a>
+			</div></li>
+		</ul>
+	</div>
+	<div title="订单管理"  data-options="iconCls:'icon-sys'"style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/frontOrder" >
+				<span class="icon icon-set" ></span>预定管理 </a>
+			</div></li>
+			<li><div>
+			<a target="mainFrame" href="/order" >
+				<span class="icon icon-set" ></span>订单管理 </a>
+			</div></li>
+			<li><div>
+			<a target="mainFrame" href="/postage" >
+				<span class="icon icon-set" ></span>运费管理 </a>
+			</div></li>
+		</ul>
+	</div>
+	<div title="会员管理"  data-options="iconCls:'icon-sys'"style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/customerType" >
+				<span class="icon icon-set" ></span>会员类型 </a>
+			</div>
+			</li>
+			<li><div>
+			<a target="mainFrame" href="/customer" >
+				<span class="icon icon-set" ></span>会员列表 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/customerAddress" >
+				<span class="icon icon-set" ></span>会员地址 </a>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<div title="系统管理"  data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<li>
+			<div>
+			<a target="mainFrame" href="/shopType" >
+				<span class="icon icon-set" ></span>商户类别 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/shop" >
+				<span class="icon icon-set" ></span>商户列表 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/bftNotice" >
+				<span class="icon icon-log" ></span>交易记录 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/filebox" >
+				<span class="icon icon-set" ></span>文件站管理 </a>
+			</div>
+			</li>
+			
+			<li>
+			<div>
+			<a target="mainFrame" href="/user" >
+				<span class="icon icon-users" ></span>操作员列表 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/menu" >
+				<span class="icon icon-log" ></span>菜单管理 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/role" >
+				<span class="icon icon-log" ></span>角色管理 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/loginLog" >
+				<span class="icon icon-log" ></span>登录日志 </a>
+			</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<#else>
+<div class="easyui-accordion" fit="falase" border="true" selected="-1">
+	<div title="订单管理" data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/order" >
+				<span class="icon icon-set" ></span>订单管理 </a>
+			</div></li>
+		</ul>
+	</div>
+	<div title="商品管理" data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/productType" >
+				<span class="icon icon-set" ></span>商品类别管理 </a>
+			</div></li>
+			<li><div>
+			<a target="mainFrame" href="/product" >
+				<span class="icon icon-set" ></span>商品管理 </a>
+			</div></li>
+			
+		</ul>
+	</div>
+	
+	<div title="会员管理"  data-options="iconCls:'icon-sys'"style="overflow:auto;">
+		<ul>
+			<li><div>
+			<a target="mainFrame" href="/customerType" >
+				<span class="icon icon-set" ></span>会员类型 </a>
+			</div>
+			</li>
+			<li><div>
+			<a target="mainFrame" href="/customer" >
+				<span class="icon icon-set" ></span>会员列表 </a>
+			</div>
+			</li>
+			<li>
+			<div>
+			<a target="mainFrame" href="/customerAddress" >
+				<span class="icon icon-set" ></span>会员地址 </a>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<div title="商户管理" data-options="iconCls:'icon-sys'" style="overflow:auto;">
+		<ul>
+			<li>
+			<div>
+			<a target="mainFrame" href="/shop" >
+				<span class="icon icon-set" ></span>商户列表 </a>
+			</div>
+			</li>
+		</ul>
+	</div>
+</div>
+</#if>

@@ -1,0 +1,29 @@
+<div  id="tt" class="easyui-tabs" style="width: 786px; height: 450px;">
+<div title="预定单" style="padding:5px;">
+<table class="tableForm tableCss">
+<tr>
+<th>id</th>
+<td>${(po.id)!}</td>
+<th>名称</th>
+<td>${(po.name)!}</td>
+</tr>
+
+<tr>
+<th>url</th>
+<td>${(po.url)!}</td>
+<th>排序</th>
+<td>${(po.seq)!}</td>
+</tr>
+
+<tr>
+<th>修改时间</th>
+<td>${(po.update_time?datetime)!}</td>
+<th>创建时间</th>
+<td>${(po.create_time?datetime)!}</td>
+</tr>
+
+<tr>
+</tr>
+</table>
+</div>
+</div>

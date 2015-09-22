@@ -1,0 +1,39 @@
+<#include "/common/layout.html"> 
+<@layout title="123">
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid.js"></script>
+<script type="text/javascript">
+	var datagrid;
+	var model_name = "${root!}/role";
+	var model_title="角色管理";
+	$(function() {
+	
+	
+		datagrid=$('#form_datagrid').datagrid({
+		 	url:'/role/grid',
+		 	columns:[[    
+		        {field:'id',title:'编号',checkbox:true},
+		        {field:'name',title:'名称',width:100},
+		        {field:'seq',title:'排序',align:'right',width:60},
+		        {field:'create_time',title:'创建时间',width:200},
+		        {field:'remark',title:'备注'}
+		    ]],
+		    onDblClickRow:function(rowIndex, rowData){
+					$(this).datagrid('unselectAll');
+					$(this).datagrid('selectRow', rowIndex);
+					edit();
+			}
+		   
+		});
+		// datagrid.datagrid("addToolbarItem",[{"text":"授权","iconCls":"icon-ok"}])
+	});
+	
+</script>
+
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_common.js"></script>
+</head>
+	<#include "/common/seach.html" />
+	<@seach>
+	<td>名称</td>
+	<td><input type="text" name="seachLike_name"></td>
+	</@seach>
+</@layout>
