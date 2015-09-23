@@ -2,7 +2,7 @@
 <@layout title="123">
 <script type="text/javascript" src="${root!}/js/easyui/easyui_grid.js"></script>
 <script type="text/javascript" charset="utf-8">
-var model_name = "{root!}/filebox";
+var model_name = "${root!}/filebox";
 var model_title="用户";
 	var editRow = undefined;
 	var datagrid;
@@ -13,7 +13,7 @@ var model_title="用户";
 	filetype['zip']='压缩包';
 	$(function() {
 		datagrid = $('#form_datagrid').datagrid({
-			url:model_name+'/grid',
+			url:model_name+"/grid",
 			queryParams: {
 				orderBy: 'order by id desc'
 			},
@@ -73,12 +73,12 @@ var model_title="用户";
 			}, '-' ],
 			onDblClickRow:null
 		});
+		gridCommon.init(model_title,model_name,datagrid);
 	});
 	function view_fuc(){
 		alert("test");
 	}
 </script>
-<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_common.js"></script>
 </head>
 	
 <#include "/common/seach.html" />

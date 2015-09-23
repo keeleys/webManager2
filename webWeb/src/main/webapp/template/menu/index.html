@@ -1,12 +1,13 @@
 <#include "/common/layout.html"> 
 <@layout title="123">
+<script type="text/javascript" src="${root!}/js/easyui/easyui_grid.js"></script>
 <script type="text/javascript">
-var model_name = "${root!}/menu";
-var model_title="菜单管理";
-var datagrid;
+	var model_name = "${root!}/menu";
+	var model_title="菜单管理";
+	var datagrid;
 	$(function() {
-		datagrid=$('#form_datagrid').treegrid({
-		 	url:model_name+'/treeDataGrid',
+		 	datagrid=$('#form_datagrid').treegrid({
+			url:model_name+"/treeDataGrid",
 		 	rownumbers:true,
 			fit:true,
 			fitColumns:false,
@@ -41,19 +42,19 @@ var datagrid;
 	        {field:'create_time',title:'创建时间'},
 	        {field:'update_time',title:'修改时间'}
 		    ]]
-		})
+		});
+		gridCommon.init(model_title,model_name,datagrid,true);
 	})
 </script>
-<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_tree.js"></script>
 </head>
 <div id="tree_tb">
-<a href="javascript:void(0)" onclick="expandAll();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">展开</a>
-<a href="javascript:void(0)" onclick="collapseAll();" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">折叠</a>
-<a href="javascript:void(0)" onclick="reload();" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
-<a href="javascript:void(0)" onclick="view();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">查看</a>
-<a href="javascript:void(0)" onclick="add();" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
-<a href="javascript:void(0)" onclick="del();"class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-<a href="javascript:void(0)" onclick="edit();" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+<a href="javascript:void(0)" onclick="gridCommon.expandAll();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">展开</a>
+<a href="javascript:void(0)" onclick="gridCommon.collapseAll();" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">折叠</a>
+<a href="javascript:void(0)" onclick="gridCommon.reload();" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+<a href="javascript:void(0)" onclick="gridCommon.view();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">查看</a>
+<a href="javascript:void(0)" onclick="gridCommon.add();" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
+<a href="javascript:void(0)" onclick="gridCommon.del();"class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+<a href="javascript:void(0)" onclick="gridCommon.edit();" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
 <a href="javascript:void(0)" onclick="datagrid.treegrid('unselectAll');" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">取消选中</a>
 </div>
 <#include "/common/seach.html" />

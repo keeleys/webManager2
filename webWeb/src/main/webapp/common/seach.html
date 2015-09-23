@@ -1,5 +1,4 @@
 <#macro seach tableid="form_datagrid" hasSeach=true hasTool=true>
-<body  class="easyui-layout">
 <div id="imgShow"  style="position: absolute;display:none;border: 4px #ccc solid ;z-index:10;background-color:#fff;padding:5px;">
 <img src="" width="150px">
 </div>
@@ -12,8 +11,8 @@
 				<tr>
 					<#nested>
 					<td>
-					<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" onclick="_search();">查询</a>
-					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="cleanSearch();">取消</a>
+					<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" onclick="gridCommon._search();">查询</a>
+					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="gridCommon.cleanSearch()">取消</a>
 					</td>
 				</tr>
 			</table>
@@ -26,22 +25,5 @@
 	</table>
 </div>
 <div id="Dialog_"></div>
-<#if hasTool>
-<div id="grid_toolbar">
-
-<a href="javascript:void(0)" id="grid_toolbar_view" onclick="view();" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">查看</a>
-<#if hasAdd>
-<a href="javascript:void(0)" id="grid_toolbar_add" onclick="add();" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
-</#if>
-<#if hasDel>
-<a href="javascript:void(0)" id="grid_toolbar_del" onclick="del();"class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-</#if>
-<#if hasEdit>
-<a href="javascript:void(0)" id="grid_toolbar_edit" onclick="edit();" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
-</#if>
-<a href="javascript:void(0)"  onclick="datagrid.datagrid('reload');" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
-<a href="javascript:void(0)"  onclick="datagrid.datagrid('unselectAll');" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">取消选中</a>
-</div>
-</#if>
-</body>
+<#include "/common/toolbar.html" />
 </#macro>

@@ -1,9 +1,11 @@
-<#macro layout title="" body=true>
+<#macro layout title="">
 <!DOCTYPE html>
 <html>
 <head>
 <title>${title!}-后台管理系统</title>
+
 <noscript><iframe src="*.htm"></iframe></noscript><#--禁止保存-->
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <META HTTP-EQUIV="pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
@@ -22,11 +24,11 @@
 <script type="text/javascript" src="${root!}/js/easyui/syUtil.js" charset="utf-8"></script>
 <script type="text/javascript" src="${root!}/js/kindeditor/kindeditor-min.js"></script>
 <script type="text/javascript" src="${root!}/js/common.js?v=20120804" charset="utf-8"></script>
-<!--<link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
-<script type="text/javascript" src="/js/uploadify/jquery.uploadify.js" charset="utf-8"></script>-->
 <script type="text/javascript" src="${root!}/js/swfupload/swfupload.js" charset="utf-8"></script>
 <script type="text/javascript" src="${root!}/js/swfupload/handlers.js" charset="utf-8"></script>
+</head>
+<body  class="easyui-layout">
 <#nested>
-
+</body>
 </html>
 </#macro>

@@ -4,10 +4,9 @@
 <script type="text/javascript">
 var model_name = "${root!}/loginLog";
 var model_title="登录日志";
-var datagrid;
 	$(function() {
-		datagrid=$('#product_type_table').datagrid({
-		 	url:model_name+'/grid',
+		var datagrid=$('#product_type_table').datagrid({
+			url:model_name+"/grid",
 		 	rownumbers:true,
 		 	queryParams: {
 				orderBy: 'order by id desc '
@@ -34,10 +33,10 @@ var datagrid;
 				}
 			}, '-' ],
 			onDblClickRow:null
-		})
+		});
+		gridCommon.init(model_title,model_name,datagrid);
 	})
 </script>
-<script type="text/javascript" src="${root!}/js/easyui/easyui_grid_common.js"></script>
 </head>
 	<#include "/common/seach.html" />
 	<@seach tableid="product_type_table">

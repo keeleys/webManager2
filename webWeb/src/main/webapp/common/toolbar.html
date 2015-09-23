@@ -1,0 +1,17 @@
+<#if hasTool>
+<div id="grid_toolbar">
+
+<a href="javascript:void(0)" id="grid_toolbar_view" onclick="gridCommon.view()" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true">查看</a>
+<#if hasAdd>
+<a href="javascript:void(0)" id="grid_toolbar_add" onclick="gridCommon.add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
+</#if>
+<#if hasDel>
+<a href="javascript:void(0)" id="grid_toolbar_del" onclick="gridCommon.del()"class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+</#if>
+<#if hasEdit>
+<a href="javascript:void(0)" id="grid_toolbar_edit" onclick="gridCommon.edit()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+</#if>
+<a href="javascript:void(0)"  onclick="datagrid.datagrid('reload');" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+<a href="javascript:void(0)"  onclick="datagrid.datagrid('unselectAll');" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true">取消选中</a>
+</div>
+</#if>
