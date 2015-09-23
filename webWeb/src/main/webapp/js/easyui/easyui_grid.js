@@ -262,6 +262,26 @@ var gridCommon = (function(gridCommon) {
 		$("#imgShow").css("left", 10 + event.x).css("top", event.y - 50).show();
 		$("#imgShow>img").attr("src", $(a_).attr('url'));
 	}
+	//取消选中 TreeGrid
+	function expandAll(){
+		
+		var node = datagrid('getSelected');
+		if (node) {
+			datagrid('expandAll',node.id);
+		} else {
+			datagrid('expandAll');
+		}
+	}
+	//折叠 TreeGrid
+	function collapseAll(){
+		var node = datagrid('getSelected');
+		if (node) {
+			datagrid('collapseAll',node.ID);
+		} else {
+			datagrid('collapseAll');
+		}
+	}
+	
 	gridCommon.init=init;
 	gridCommon.del=del;
 	gridCommon.edit=edit;
@@ -270,6 +290,7 @@ var gridCommon = (function(gridCommon) {
 	gridCommon._search=_search;
 	gridCommon.cleanSearch=cleanSearch;
 	gridCommon.hoverShow = hoverShow;
-	
+	gridCommon.expandAll=expandAll;
+	gridCommon.collapseAll=collapseAll;
 	return gridCommon;
 })(window.gridCommon || {});
