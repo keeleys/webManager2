@@ -1,14 +1,13 @@
 package com.ttianjun.interceptor;
 
+import java.util.List;
+
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.ttianjun.ext.Content;
 import com.ttianjun.model.Menu;
 import com.ttianjun.model.User;
-
-
-import java.util.List;
 
 /**
  * 权限拦截
@@ -18,7 +17,7 @@ import java.util.List;
 public class AuthorityIntercept implements Interceptor {
 	
 	private List<Menu> menuList;//用户的操作权限
-	public void intercept(ActionInvocation ai) {
+	public void intercept(Invocation  ai) {
 		// TODO Auto-generated method stub
 		
 		//不需要判断权限的方法名（一般是些ajax组件 不是页面）

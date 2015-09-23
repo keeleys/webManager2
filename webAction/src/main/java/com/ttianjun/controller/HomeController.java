@@ -1,7 +1,12 @@
 package com.ttianjun.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import com.jfinal.aop.Before;
-import com.jfinal.aop.ClearInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.ttianjun.ext.Content;
@@ -10,19 +15,14 @@ import com.ttianjun.model.LoginLog;
 import com.ttianjun.model.Menu;
 import com.ttianjun.model.User;
 
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 @SuppressWarnings({ "unchecked", "rawtypes" })
-@ClearInterceptor
+
 public class HomeController  extends BaseController {
 	
 	public HomeController() {
 		super(null);
 	}
+	@Clear
     public void index() {
 		User user = getCurrentUser();
 		if(user==null)
@@ -30,6 +30,7 @@ public class HomeController  extends BaseController {
 		else
 			render("/common/index.html");
 	}
+	@Clear
 	public void login(){
 		String username = getPara("username");
 		String password = getPara("password");
@@ -56,11 +57,12 @@ public class HomeController  extends BaseController {
 		CacheKit.removeAll("authority");//登录的时候 删除所有权限缓存
 		this.rendJson_(true, "登录成功");
 	}
+	@Clear
 	@Before(SessionInViewInterceptor.class)
 	public void north(){
 		render("/common/north.html");
 	}
-	
+	@Clear
 	@Before(LoginAdminInterceptor.class)
 	public void west(){
 		
@@ -75,7 +77,7 @@ public class HomeController  extends BaseController {
 		render("/common/west.html");
 	}
 	
-	
+	@Clear
 	public void logout(){
 		String loginLogId=this.getCookie(Content.SESSION_LOGIN_LOG_ID);
 		if(loginLogId!=null&&!"".equals(loginLogId)){

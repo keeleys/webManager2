@@ -1,14 +1,14 @@
 package com.ttianjun.interceptor;
 
-import com.jfinal.aop.PrototypeInterceptor;
-import com.jfinal.core.ActionInvocation;
-import com.jfinal.core.Controller;
-import com.jfinal.kit.StrKit;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.jfinal.aop.Invocation;
+import com.jfinal.aop.PrototypeInterceptor;
+import com.jfinal.core.Controller;
+import com.jfinal.kit.StrKit;
 
 /**
  * <ul>
@@ -36,7 +36,7 @@ public class Seach extends PrototypeInterceptor {
 	private List<Object> sqlParam;
 	private String orderBy="";
 	@Override
-	public void doIntercept(ActionInvocation ai) {
+	public void doIntercept(Invocation ai) {
 		// TODO Auto-generated method stub
 		StringBuffer sb = new StringBuffer();
 		Controller ctrl=ai.getController();

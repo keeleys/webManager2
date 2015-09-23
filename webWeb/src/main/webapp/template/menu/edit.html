@@ -3,7 +3,7 @@
 		var mtype =${(po.type)!0};
 		$("input[name='menu.type']").eq(mtype).attr("checked",'checked');
 		$('#pid').combotree({
-			url: '/menu/combotree/${(po.id)!}',
+			url: '${root!}/menu/combotree/${(po.id)!}',
 			width:250
 		}); 
 	})

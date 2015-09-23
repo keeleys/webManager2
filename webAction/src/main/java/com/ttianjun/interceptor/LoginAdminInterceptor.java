@@ -1,14 +1,14 @@
 package com.ttianjun.interceptor;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.ttianjun.ext.Content;
 import com.ttianjun.model.User;
 
 public class LoginAdminInterceptor implements Interceptor {
 
-	public void intercept(ActionInvocation ai) {
+	public void intercept(Invocation ai) {
 		// TODO Auto-generated method stub
 		Controller ctrl = ai.getController();
 		User user = ctrl.getSessionAttr(Content.SESSION_LOGIN_USER);
